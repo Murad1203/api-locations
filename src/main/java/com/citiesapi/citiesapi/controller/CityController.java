@@ -12,6 +12,10 @@ public class CityController {
     @Autowired
     private CityService cityService;
 
+    @GetMapping("/")
+    public String hello() {
+        return "Hello Offer";
+    }
     @CrossOrigin
     @GetMapping("/cities")
     public List<City> getAllCities() {
