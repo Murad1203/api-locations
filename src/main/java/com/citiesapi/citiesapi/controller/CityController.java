@@ -14,7 +14,8 @@ public class CityController {
 
     @GetMapping("/")
     public String hello() {
-        return "Hello Offer";
+        String urls = "/v1/byCities/{Название города} \n /v1/cities - получить все города";
+        return urls;
     }
     @CrossOrigin
     @GetMapping("/cities")
