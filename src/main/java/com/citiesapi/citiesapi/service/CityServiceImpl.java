@@ -4,6 +4,9 @@ import com.citiesapi.citiesapi.model.City;
 import com.citiesapi.citiesapi.repository.CityRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -32,6 +35,7 @@ public class CityServiceImpl implements CityService {
         return findSettlements(settlements, settlement);
     }
     public List<City> findSettlements(List<City> settlements, String settlement) {
+
         List<City> res = settlements.stream()
                 .filter((sett) -> sett.getSettlement().contains(settlement))
                 .sorted((o1, o2) -> o2.getPopulation().compareTo(o1.getPopulation()))
@@ -45,6 +49,7 @@ public class CityServiceImpl implements CityService {
     }
     @Override
     public void saveAllCities(List<City> cities) {
+        cities.sort((o1, o2) -> o2.getSettlement().compareTo(o1.getSettlement()));
         repository.saveAll(cities);
     }
 
